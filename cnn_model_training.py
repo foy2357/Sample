@@ -4,7 +4,7 @@ import tensorflow as tf
 import os
 import datetime
 import numpy as np
-from helpers import save_training_history_to_file, plot_model_and_save, make_directory, calculate_input_shape, visualize_features, single_visualize_feature, visualize_selected_indices, plot_heat_map, load_data, plot_history_tf, count_classes, list_class_names, load_ex_data
+from helpers import save_training_history_to_file, plot_model_and_save, make_directory, calculate_input_shape, plot_heat_map, load_data, plot_history_tf, count_classes, list_class_names, load_ex_data
 
 project_path = "./"
 model_name = "layer1"
@@ -16,7 +16,7 @@ model_path = project_path + model_dir + "/" + model_filename
 RANDOM_SEED = 42
 NUM_EPOCHS = 30
 BATCH_SIZE = 16
-RATIO = 0.38373998091834904
+RATIO = 0.4
 
 def build_model(input_shape):
     model = tf.keras.Sequential([
@@ -25,7 +25,7 @@ def build_model(input_shape):
         tf.keras.layers.MaxPooling1D(pool_size=2, strides=1, padding='SAME'),
         tf.keras.layers.Flatten(),
         tf.keras.layers.Dense(256, activation='relu'),
-        tf.keras.layers.Dropout(0.09987178356495036),
+        tf.keras.layers.Dropout(0.01),
         tf.keras.layers.Dense(count_classes(), activation='softmax')
     ])
     
@@ -47,17 +47,7 @@ def main():
         print('-------------------------------------------------------')
         model = tf.keras.models.load_model(filepath=model_path)
         
-        layer_names = ['conv1d_3', 'dense_6']
-        
-        visualize_features(model, model_name,  X_test, y_test, layer_names)
-        
-        single_layer_name = 'conv1d_3'
-        
-        single_visualize_feature(model, model_name,  X_test, y_test, single_layer_name)
-        
-        layer_name = 'conv1d_3'
-        selected_label = 'cylinder'
-        visualize_selected_indices(model, model_name, X_test, y_test, ex_X_test, layer_name, selected_label, num_threshold=15, pred_threshold=0.9)
+
     
     else:
         # build the CNN model
