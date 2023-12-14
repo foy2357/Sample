@@ -78,20 +78,7 @@ python cnn_model_training.py
 
 `cnn_model_training.py` の訓練プロセスを補助する機能を提供しています。
 
-## `helpers.py` /`visualize_selected_indices` 関数
 
-`visualize_selected_indices` 関数は、スペクトル分類モデルが正確に予測したスペクトルデータの中から、特定のクラスに属するデータを視覚化します。関数の主な入力は以下です：
-
-- `model`: 訓練されたCNNモデル
-- `model_name`: モデルの名前
-- `X_test`: テストデータのスペクトルデータ
-- `y_test`: テストデータの真のクラスラベル
-- `single_layer_name`: CNNモデルの特定のレイヤー名
-- `selected_label`: 視覚化したいクラスのラベル
-- `num_threshold`: 視覚化するデータポイントの上限数
-- `pred_threshold`: データポイントを選択するための予測確率の閾値
-
-`visualize_selected_indices` 関数は、予測確率が `pred_threshold` 以上であるデータポイントを特定し、それらのスペクトルデータと特定のレイヤーの特徴マップを視覚化します。これにより、モデルが特定のクラスを予測する際の重要なスペクトルパターンを可視化することができます。
 
 ## ライセンス
 
